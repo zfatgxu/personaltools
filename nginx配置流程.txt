@@ -1,0 +1,13 @@
+sudo vim /etc/nginx/sites-available/acm.gxu.edu.cn
+
+添加
+location ~ [^/]\.php(/|$){
+		include /etc/nginx/snippets/fastcgi-php.conf;
+		fastcgi_pass unix:/var/run/php/php7.3-fpm.sock;
+		root /srv/www/acm.gxu.edu.cn/school_contest;
+     }
+注意：
+fastcgi-php.conf中包含的fastcgi.conf的路径
+/etc/nginx/fastcgi.conf
+
+最后sudo service nginx restart
